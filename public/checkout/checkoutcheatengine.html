@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Checkout Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .header-container {
+            background-color: transparent;
+            width: 100%;
+            /* Full width */
+            padding: 10px 50px;
+            /* Increased padding for wider frame */
+            display: flex;
+            justify-content: space-between;
+            /* Distribute items */
+            align-items: center;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header {
+            position: relative;
+            width: 100%;
+            /* Ensure full width */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            /* Adjust the spacing between elements */
+            border: 2px solid #f0c808;
+            /* Yellow border around the frame */
+            padding: 10px 20px;
+            /* Padding for elements */
+            border-radius: 5px;
+            background-color: #111;
+            /* Background color for the frame */
+        }
+
+        .header .logo,
+        .header .best-cheats,
+        .header .discord {
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            padding: 5px 10px;
+        }
+
+        .header .logo a,
+        .header .best-cheats span,
+        .header .discord a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .header .discord img {
+            width: 30px;
+            margin-right: 5px;
+        }
+
+        /* Light animation */
+        .light {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            background-color: #f0c808;
+            border-radius: 50%;
+            animation: lightGlow 2s infinite alternate;
+        }
+
+        @keyframes lightGlow {
+            0% {
+                box-shadow: 0 0 10px 5px #f0c808;
+            }
+
+            100% {
+                box-shadow: 0 0 20px 10px #f0c808;
+            }
+        }
+
+        .header:hover .light {
+            animation: none;
+            /* Disable animation on hover */
+        }
+
+        .checkout-container {
+            background: #111;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            width: 80%;
+            max-width: 800px;
+            margin-top: 100px;
+            /* Adjusted to accommodate header */
+        }
+
+        h2 {
+            border-bottom: 1px solid #444;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .form-control {
+            margin-bottom: 1rem;
+        }
+
+        .form-control label {
+            display: block;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .form-control input[type="text"],
+        .form-control input[type="email"],
+        .form-control select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #666;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        .form-control input[type="submit"] {
+            background-color: #f0c808;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .order-summary {
+            background: #222;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+            border: 1px solid #444;
+            color: #fff;
+        }
+
+        .order-summary h3 {
+            margin-top: 0;
+            color: #fff;
+        }
+
+        .order-summary ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .order-summary ul li {
+            margin-bottom: 5px;
+            color: #ccc;
+        }
+
+        .order-summary ul li:last-child {
+            color: #f0c808;
+            /* Color for total amount */
+            font-weight: bold;
+        }
+
+        .website-info {
+            background-color: transparent;
+            color: #fff;
+            padding: 10px 20px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .website-info a {
+            color: #f0c808;
+            text-decoration: none;
+        }
+    </style>
+    <script>
+        function redirectToPayPal(event) {
+            event.preventDefault(); // Prevent form submission
+            var email = document.getElementById('email').value;
+            var isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); // Basic email validation
+
+            if (isValidEmail) {
+                // Replace with your PayPal checkout link
+                window.location.href = 'https://www.paypal.com';
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <div class="header-container">
+        <div class="header">
+            <div class="logo">
+                <a href="#"><i class="fas fa-house-user"></i> Team Bypass</a>
+            </div>
+            <div class="best-cheats">
+                <span><i class="fas fa-align-center"></i> Best Cheats</span>
+            </div>
+            <div class="discord">
+                <a href="https://discord.com/invite/3Qpk3Ys5"><span><i class="fab fa-discord"></i> Discord</span></a>
+            </div>
+            <!-- Animated light effect -->
+            <div class="light"></div>
+        </div>
+    </div>
+
+    <!-- Checkout Form Section -->
+    <div class="checkout-container">
+        <h2>Type Your Email and Proceed to PayPal</h2>
+
+        <!-- Customer Information Form -->
+        <form id="checkout-form" onsubmit="redirectToPayPal(event)">
+            <div class="form-control">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-control">
+                <input type="submit" value="Proceed to PayPal">
+            </div>
+        </form>
+
+        <!-- Order Summary -->
+        <div class="order-summary">
+            <h3>Order Summary</h3>
+            <ul>
+                <li>Product: Cheat Engine Bypass</li>
+                <li>Price: $39.99</li>
+                <li>Total: $40.00</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Website Information Section -->
+    <div class="website-info">
+        <a href="#">Our Website Information</a>
+    </div>
+
+</body>
+
+</html>
